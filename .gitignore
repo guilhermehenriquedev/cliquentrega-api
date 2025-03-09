@@ -1,0 +1,39 @@
+# Python bytecode e arquivos compilados
+*.py[cod]
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Arquivos de log e temporários
+*.log
+*.pot
+
+# Banco de dados SQLite (se for usado)
+db.sqlite3
+
+# Arquivos de configuração local
+local_settings.py
+*.env
+
+# Pastas de ambiente virtual
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Diretórios de mídia e arquivos estáticos gerados
+media/
+staticfiles/
+
+# Arquivos específicos de IDEs e editores
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,21 +78,15 @@ WSGI_APPLICATION = 'cliquentrega_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
 
 DATABASES = {
      'default': {
-         'ENGINE': 'django.db.backends.postgresql',
-         'NAME': 'cliquentrega_db',
-         'USER': 'postgres',
-         'PASSWORD': '123',
-         'HOST': 'localhost',
-         'PORT': '5433',
+         'ENGINE':      config('DBENGINE'),
+         'NAME':        config('DBNAME'),
+         'USER':        config('DBUSER'),
+         'PASSWORD':    config('DBPASSWORD'),
+         'HOST':        config('DBHOST'),
+         'PORT':        config('DBPORT'),
      }
 }
 
