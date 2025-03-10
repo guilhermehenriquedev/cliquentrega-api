@@ -32,7 +32,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 SECRET_KEY = config('SECRET_KEY', default='')
     
     
-# Application definition
+# Application definition 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
