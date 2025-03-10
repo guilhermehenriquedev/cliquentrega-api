@@ -28,7 +28,7 @@ venv.bak/
 
 # Diretórios de mídia e arquivos estáticos gerados
 media/
-staticfiles/
+
 
 # Arquivos específicos de IDEs e editores
 .vscode/
