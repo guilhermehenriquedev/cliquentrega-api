@@ -1,1 +1,1 @@
-web: gunicorn cliquentrega_backend.cliquentrega_app.wsgi --log-file -
+web: gunicorn cliquentrega_app.wsgi --log-file -
