@@ -22,14 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ["*"]
 
-# Configuração para coletar arquivos estáticos no Heroku
-if 'DYNO' in os.environ:
-    DEBUG = False  # Garante que o DEBUG esteja desativado em produção
-    SECRET_KEY = config('SECRET_KEY', default='')
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='*').split(',')
+CORS_ALLOW_CREDENTIALS = True
+
+
+SECRET_KEY = config('SECRET_KEY', default='')
     
     
 # Application definition
