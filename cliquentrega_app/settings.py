@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
     'cliquentrega_app.location',
     'cliquentrega_app.products',
     'cliquentrega_app.users',
@@ -55,6 +57,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cliquentrega_app.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
 
 TEMPLATES = [
     {
