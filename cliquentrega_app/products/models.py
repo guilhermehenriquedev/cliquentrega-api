@@ -10,12 +10,12 @@ class Categoria(models.Model):
         return self.nome
 
 class Produto(models.Model):
-    nome = models.CharField(max_length=150)
+    nome = models.CharField(max_length=10000)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    imagem = models.CharField(max_length=300, blank=True, null=True)
+    imagem = models.CharField(max_length=10000, blank=True, null=True)
     cidades = models.ManyToManyField(Cidade, blank=True)
-    link_pagamento = models.URLField(max_length=300, blank=True, null=True)
+    link_pagamento = models.URLField(max_length=10000, blank=True, null=True)
     destaque = models.BooleanField(default=False)
     descricao = models.TextField(blank=True, null=True)
 
