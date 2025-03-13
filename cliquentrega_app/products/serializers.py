@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Produto, Categoria, Cidade
+from .models import Produto, Categoria, Cidade, Flag
 from cliquentrega_app.location.serializers import CidadeSerializer
 
 
@@ -7,7 +7,12 @@ class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
         fields = '__all__'
-
+        
+class Flagerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Flag
+        fields = '__all__'
+        
 class ProdutoSerializer(serializers.ModelSerializer):
     categoria = CategoriaSerializer(read_only=True)
     categoria_id = serializers.PrimaryKeyRelatedField(
