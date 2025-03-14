@@ -20,7 +20,7 @@ class Produto(models.Model):
     nome = models.CharField(max_length=10000)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    flag = models.ForeignKey(Flag, on_delete=models.CASCADE, null=True)
+    flag = models.ForeignKey(Flag, on_delete=models.CASCADE, null=True, blank=True)
     imagem = models.CharField(max_length=10000, blank=True, null=True)
     cidades = models.ManyToManyField(Cidade, blank=True)
     link_pagamento = models.URLField(max_length=10000, blank=True, null=True)

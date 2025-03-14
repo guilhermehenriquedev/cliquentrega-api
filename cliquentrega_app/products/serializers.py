@@ -8,7 +8,7 @@ class CategoriaSerializer(serializers.ModelSerializer):
         model = Categoria
         fields = '__all__'
         
-class Flagerializer(serializers.ModelSerializer):
+class FlagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flag
         fields = '__all__'
@@ -22,11 +22,13 @@ class ProdutoSerializer(serializers.ModelSerializer):
     cidades_ids = serializers.PrimaryKeyRelatedField(
         queryset=Cidade.objects.all(), many=True, source='cidades', write_only=True
     )
-
+    flag = FlagSerializer(read_only=True, allow_null=True)
+    flag_id = serializers.PrimaryKeyRelatedField(
+        queryset=Flag.objects.all(), source='flag', write_only=True, allow_null=True
+    )
     class Meta:
         model = Produto
         fields = [
-            'id', 'nome', 'preco', 'categoria', 'categoria_id',
-            'imagem', 'cidades', 'cidades_ids', 'link_pagamento',
-            'destaque', 'descricao'
+            'id', 'nome', 'preco', 'categoria', 'categoria_id', 'flag', 'flag_id',
+            'imagem', 'cidades', 'cidades_ids', 'link_pagamento', 'destaque', 'descricao'
         ]
