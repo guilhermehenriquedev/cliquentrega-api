@@ -7,12 +7,22 @@ class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
         fields = '__all__'
-        
+
+
 class FlagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flag
         fields = '__all__'
-        
+
+
+# Campo customizado para tratar "0" como valor nulo
+class OptionalFlagPrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
+    def to_internal_value(self, data):
+        if data in [0, "0"]:
+            return None
+        return super().to_internal_value(data)
+
+
 class ProdutoSerializer(serializers.ModelSerializer):
     categoria = CategoriaSerializer(read_only=True)
     categoria_id = serializers.PrimaryKeyRelatedField(
@@ -23,9 +33,10 @@ class ProdutoSerializer(serializers.ModelSerializer):
         queryset=Cidade.objects.all(), many=True, source='cidades', write_only=True
     )
     flag = FlagSerializer(read_only=True, allow_null=True)
-    flag_id = serializers.PrimaryKeyRelatedField(
+    flag_id = OptionalFlagPrimaryKeyRelatedField(
         queryset=Flag.objects.all(), source='flag', write_only=True, allow_null=True
     )
+
     class Meta:
         model = Produto
         fields = [
